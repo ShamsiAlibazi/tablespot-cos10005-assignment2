@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--
+    TableSpot Melbourne – Bill Calculator Page (bill.html)
+    COS10005 Web Development – Assignment 2 (Bonus Page)
+    Author: Shamsi Alibazi
+-->
+<head>
+    <title>Bill Calculator | TableSpot Melbourne</title>
+    <meta charset="utf-8">
+    <meta name="description" content="Estimate your dining bill at any TableSpot Melbourne restaurant. Adjust group size, discounts, tip, and see a full GST breakdown.">
+    <meta name="keywords" content="restaurant bill calculator Melbourne, dining cost estimate, TableSpot Melbourne">
+    <meta name="author" content="Shamsi Alibazi">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="css/style.css" rel="stylesheet">
+    <script src="js/script.js" defer></script>
+</head>
+
+<body>
+
+<!-- ========== HEADER ========== -->
+<header>
+    <img src="images/logo.png" alt="TableSpot Melbourne logo">
+    <div>
+        <h1>TableSpot Melbourne</h1>
+        <p>Discover, choose, and reserve your next dining experience.</p>
+    </div>
+</header>
+
+<!-- ========== NAVIGATION ========== -->
+<nav>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation menu">
+        <span></span><span></span><span></span>
+    </button>
+    <ul id="navList">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="restaurants.html">Restaurants</a></li>
+        <li><a href="reservation.html">Reservation</a></li>
+        <li><a href="recommend.html">Recommendations</a></li>
+        <li><a href="register.html">Register</a></li>
+    </ul>
+</nav>
+
+<!-- ========== MAIN CONTENT ========== -->
+<main>
+
+    <section class="page-intro">
+        <h2>Estimated Bill Calculator</h2>
+        <p>
+            Estimate your total dining costs before you visit.
+            Adjust the group size, apply discounts, include drinks, and add a tip
+            to see a full cost breakdown including Australian GST.
+            The estimate updates automatically as you make changes.
+        </p>
+    </section>
+
+    <div class="bill-layout">
+
+        <!-- ===== INPUT PANEL ===== -->
+        <section class="bill-form-card">
+            <h3>Configure Your Estimate</h3>
+
+            <!--
+                Bill calculator form.
+                All inputs are wired to recalcBill() in script.js.
+                No submission needed — the estimate updates live.
+            -->
+            <form id="billForm" novalidate>
+
+                <!-- Restaurant selection -->
+                <div class="field">
+                    <label for="billRestaurant">Select Restaurant</label>
+                    <select id="billRestaurant" name="billRestaurant">
+                        <option value="">-- Choose a restaurant --</option>
+                        <option value="Bella Vita">Bella Vita – Italian ($35–$55/person)</option>
+                        <option value="Saffron Lane">Saffron Lane – Middle Eastern ($30–$50/person)</option>
+                        <option value="Green Bowl">Green Bowl – Vegan ($25–$40/person)</option>
+                        <option value="Sakura House">Sakura House – Japanese ($40–$65/person)</option>
+                        <option value="River Plate">River Plate – Modern Australian ($45–$70/person)</option>
+                        <option value="Thai Orchid">Thai Orchid – Thai ($28–$45/person)</option>
+                    </select>
+                </div>
+
+                <!-- Number of guests (range slider) -->
+                <div class="field">
+                    <label for="billPeople">
+                        Number of Guests:
+                        <span class="slider-value-display" id="peopleDisplay">2</span>
+                    </label>
+                    <input type="range"
+                           id="billPeople"
+                           name="billPeople"
+                           min="1" max="20" value="2"
+                           aria-label="Number of guests">
+                    <div class="slider-label-row"><span>1</span><span>20</span></div>
+                </div>
+
+                <!-- Discount (range slider) -->
+                <div class="field">
+                    <label for="billDiscount">
+                        Discount:
+                        <span class="slider-value-display" id="discountDisplay">0%</span>
+                    </label>
+                    <input type="range"
+                           id="billDiscount"
+                           name="billDiscount"
+                           min="0" max="50" step="5" value="0"
+                           aria-label="Discount percentage">
+                    <div class="slider-label-row"><span>0%</span><span>50%</span></div>
+                    <span class="field-hint">Apply member, group, or promo code discount.</span>
+                </div>
+
+                <!-- Tip (range slider) -->
+                <div class="field">
+                    <label for="billTip">
+                        Tip / Gratuity:
+                        <span class="slider-value-display" id="tipDisplay">0%</span>
+                    </label>
+                    <input type="range"
+                           id="billTip"
+                           name="billTip"
+                           min="0" max="20" step="5" value="0"
+                           aria-label="Tip percentage">
+                    <div class="slider-label-row"><span>0%</span><span>20%</span></div>
+                </div>
+
+                <!-- Include drinks estimate -->
+                <div class="field">
+                    <div class="checkbox-group">
+                        <label>
+                            <input type="checkbox" id="includeDrinks" name="includeDrinks">
+                            Add estimated drinks (~$15 per person)
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Deduct pre-paid deposit -->
+                <div class="field">
+                    <div class="checkbox-group">
+                        <label>
+                            <input type="checkbox" id="includeDeposit" name="includeDeposit">
+                            Deduct pre-paid reservation deposit from total
+                        </label>
+                    </div>
+                </div>
+
+                <a href="reservation.html" class="button" style="margin-top:8px;display:inline-block;">
+                    Proceed to Reservation →
+                </a>
+
+            </form>
+        </section>
+
+        <!-- ===== RESULT PANEL ===== -->
+        <section class="bill-result-card" aria-live="polite" aria-label="Bill estimate">
+            <h3>💰 Your Estimate</h3>
+
+            <div id="billSummary">
+                <div class="bill-placeholder">
+                    <p>🍴 Select a restaurant and number of guests to see your estimated bill.</p>
+                </div>
+            </div>
+        </section>
+
+    </div><!-- end .bill-layout -->
+
+    <!-- Explanation panel -->
+    <section style="width:85%;max-width:1050px;margin:0 auto 40px;" class="card">
+        <h3>About This Estimate</h3>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:14px;">
+            <div>
+                <h4 style="color:#803D3B;margin-bottom:6px;">📊 Price Range Used</h4>
+                <p style="font-size:0.87rem;color:#5a4f4d;">
+                    Estimates use the midpoint of each restaurant's price range per person
+                    for food items (e.g. $35–$55 uses $45 as the average).
+                </p>
+            </div>
+            <div>
+                <h4 style="color:#803D3B;margin-bottom:6px;">🧾 GST Included</h4>
+                <p style="font-size:0.87rem;color:#5a4f4d;">
+                    All estimates include Australia's 10% Goods and Services Tax (GST),
+                    which is included in listed restaurant prices by law.
+                </p>
+            </div>
+            <div>
+                <h4 style="color:#803D3B;margin-bottom:6px;">⚠️ Estimate Only</h4>
+                <p style="font-size:0.87rem;color:#5a4f4d;">
+                    Actual costs vary depending on your specific dish choices,
+                    current menu pricing, and any specials offered on the day.
+                </p>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<!-- ========== FOOTER ========== -->
+<footer>
+    <p>&copy; 2026 TableSpot Melbourne | Created by Shamsi Alibazi for COS10005 Web Development</p>
+</footer>
+
+</body>
+</html>

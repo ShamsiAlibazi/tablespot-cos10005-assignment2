@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--
+    TableSpot Melbourne – Home Page (index.html)
+    COS10005 Web Development – Assignment 2
+    Author: Shamsi Alibazi
+-->
+<head>
+    <title>TableSpot Melbourne | Restaurant Discovery and Reservation</title>
+    <meta charset="utf-8">
+    <meta name="description" content="TableSpot Melbourne helps users discover restaurants, receive personalised recommendations, and reserve tables online.">
+    <meta name="keywords" content="Melbourne restaurants, restaurant booking, dining, reservation, food recommendation">
+    <meta name="author" content="Shamsi Alibazi">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="css/style.css" rel="stylesheet">
+    <script src="js/script.js" defer></script>
+</head>
+
+<body>
+
+<!-- ========== HEADER ========== -->
+<header>
+    <img src="images/logo.png" alt="TableSpot Melbourne logo">
+    <div>
+        <h1>TableSpot Melbourne</h1>
+        <p>Discover, choose, and reserve your next dining experience.</p>
+    </div>
+</header>
+
+<!-- ========== NAVIGATION ========== -->
+<nav>
+    <!-- Mobile toggle button -->
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+    </button>
+
+    <ul id="navList">
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="restaurants.html">Restaurants</a></li>
+        <li><a href="reservation.html">Reservation</a></li>
+        <li><a href="recommend.html">Recommendations</a></li>
+        <li><a href="register.html">Register</a></li>
+    </ul>
+</nav>
+
+<!-- ========== MAIN LAYOUT ========== -->
+<div class="container">
+
+    <!-- Main content area -->
+    <main>
+
+        <!-- Welcome / platform intro -->
+        <section class="card">
+            <h2>Welcome to TableSpot Melbourne</h2>
+            <p>
+                TableSpot Melbourne is a restaurant discovery and reservation platform
+                designed to make planning your next meal simple and enjoyable.
+                Our platform connects diners with the best restaurants across Melbourne,
+                offering convenience, variety, and an accessible booking experience.
+            </p>
+            <p>
+                Whether you are looking for a quick casual lunch, a romantic dinner,
+                a family celebration, or a professional business meal,
+                TableSpot Melbourne gives you the tools to find and book the right restaurant.
+            </p>
+        </section>
+
+        <!-- Featured restaurants preview -->
+        <section class="card">
+            <h2>Featured Restaurants</h2>
+            <p style="margin-bottom:18px;">Hand-picked highlights from our Melbourne restaurant collection.</p>
+
+            <div class="restaurant-preview">
+
+                <article class="restaurant-card">
+                    <img src="images/Bella_Vita.jpeg" alt="Handmade Italian pasta dish at Bella Vita restaurant">
+                    <h3>Bella Vita</h3>
+                    <p>Italian cuisine · $35–$55 per person</p>
+                    <a href="restaurants.html" class="button">View Details</a>
+                </article>
+
+                <article class="restaurant-card">
+                    <img src="images/Saffron Lane.jpg" alt="Middle Eastern food platter with kebabs and dips at Saffron Lane">
+                    <h3>Saffron Lane</h3>
+                    <p>Middle Eastern · $30–$50 per person</p>
+                    <a href="restaurants.html" class="button">View Details</a>
+                </article>
+
+                <article class="restaurant-card">
+                    <img src="images/Vegansaladbowl.jpg" alt="Fresh vegan salad bowl at Green Bowl Fitzroy">
+                    <h3>Green Bowl</h3>
+                    <p>Vegan cuisine · $25–$40 per person</p>
+                    <a href="restaurants.html" class="button">View Details</a>
+                </article>
+
+            </div>
+        </section>
+
+        <!-- Services / what we offer -->
+        <section class="card">
+            <h2>Our Services</h2>
+            <div class="services-grid">
+                <div class="service-item">
+                    <div class="icon">🔍</div>
+                    <h4>Restaurant Discovery</h4>
+                    <p>Browse Melbourne restaurants filtered by location, cuisine, and price range.</p>
+                </div>
+                <div class="service-item">
+                    <div class="icon">✨</div>
+                    <h4>Smart Recommendations</h4>
+                    <p>Get personalised restaurant suggestions based on your dietary needs, budget, and occasion.</p>
+                </div>
+                <div class="service-item">
+                    <div class="icon">📅</div>
+                    <h4>Easy Reservations</h4>
+                    <p>Reserve a table online in minutes with a simple deposit — no phone calls needed.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Hero call to action -->
+        <section class="hero">
+            <div class="hero-content">
+                <h2>Find the Right Restaurant for Every Occasion</h2>
+                <p>
+                    Explore Melbourne restaurants, compare dining options, receive personalised
+                    recommendations, and secure a table with a convenient online deposit.
+                </p>
+                <div class="hero-buttons">
+                    <a href="restaurants.html" class="button">Browse Restaurants</a>
+                    <a href="recommend.html" class="button">Get Recommendation</a>
+                    <a href="reservation.html" class="button">Reserve a Table</a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Sidebar -->
+    <aside>
+
+        <section class="card">
+            <h3>Who We Serve</h3>
+            <div class="users-grid">
+                <div class="user-item">
+                    <div class="icon">👨‍👩‍👧‍👦</div>
+                    <div>
+                        <h4>Families</h4>
+                        <p>Kid-friendly and halal options for the whole family.</p>
+                    </div>
+                </div>
+                <div class="user-item">
+                    <div class="icon">💑</div>
+                    <div>
+                        <h4>Couples</h4>
+                        <p>Romantic settings for date nights and anniversaries.</p>
+                    </div>
+                </div>
+                <div class="user-item">
+                    <div class="icon">💼</div>
+                    <div>
+                        <h4>Professionals</h4>
+                        <p>Premium venues for business lunches and client dinners.</p>
+                    </div>
+                </div>
+                <div class="user-item">
+                    <div class="icon">✈️</div>
+                    <div>
+                        <h4>Tourists</h4>
+                        <p>Discover local Melbourne flavours and dining culture.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="card">
+            <h3>Quick Reservation</h3>
+            <p>
+                Already know where you want to dine? Go directly to the reservation page,
+                choose your restaurant, date, time, number of guests, and deposit method.
+            </p>
+            <a href="reservation.html" class="button">Start Reservation</a>
+        </section>
+
+        <section class="card">
+            <h3>How It Works</h3>
+            <ol style="padding-left:18px; line-height:2;">
+                <li>Browse available restaurants.</li>
+                <li>Choose or get a recommendation.</li>
+                <li>Complete the reservation form.</li>
+                <li>Select your deposit method.</li>
+                <li>Confirm and enjoy your meal!</li>
+            </ol>
+        </section>
+
+        <section class="card">
+            <h3>Bill Calculator</h3>
+            <p>
+                Want to estimate your meal costs before visiting?
+                Use our interactive bill calculator to plan your budget.
+            </p>
+            <a href="bill.html" class="button">Try Calculator</a>
+        </section>
+
+    </aside>
+
+</div><!-- end .container -->
+
+<!-- ========== FOOTER ========== -->
+<footer>
+    <p>&copy; 2026 TableSpot Melbourne | Created by Shamsi Alibazi for COS10005 Web Development</p>
+</footer>
+
+</body>
+</html>

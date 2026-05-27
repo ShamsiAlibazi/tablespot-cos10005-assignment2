@@ -1,0 +1,1224 @@
+/* =============================================================
+   TableSpot Melbourne - Main Stylesheet (style.css)
+   COS10005 Web Development - Assignment 2
+   Author: Shamsi Alibazi
+   
+   Colour palette:
+     Dark Brown  : #322C2B
+     Red-Brown   : #803D3B
+     Tan         : #AF8260
+     Cream       : #E4C59E
+     Off-White   : #FFF8EF
+   ============================================================= */
+
+
+/* =========================
+   RESET & BASE
+========================= */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    color: #322C2B;
+    font-family: Arial, sans-serif;
+    background-color: #E4C59E;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+a {
+    color: #803D3B;
+}
+
+main {
+    flex: 1;
+}
+
+
+/* =========================
+   HEADER
+========================= */
+header {
+    background-color: #322C2B;
+    color: #E4C59E;
+    text-align: center;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
+}
+header img{
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2rem;
+}
+
+header p {
+    margin-top: 8px;
+    font-size: 1rem;
+    color: #AF8260;
+}
+
+
+/* =========================
+   NAVIGATION
+========================= */
+nav {
+    background-color: #803D3B;
+    height: 50px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+nav ul {
+    display: flex;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    height: 100%;
+}
+
+nav li {
+    flex: 1;
+}
+
+nav a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    text-decoration: none;
+    color: #FFFFFF;
+    font-weight: bold;
+    font-size: 0.95rem;
+    transition: background-color 0.3s;
+}
+
+nav a:hover {
+    background-color: #AF8260;
+    color: #322C2B;
+}
+
+/* Current page highlight - set via class="active" on the relevant link */
+nav a.active {
+    background-color: #AF8260;
+    color: #322C2B;
+    font-weight: bold;
+}
+
+/* Mobile hamburger - hidden on desktop */
+.nav-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 12px;
+    height: 50px;
+    justify-content: center;
+    align-items: center;
+}
+
+.nav-toggle span {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: #fff;
+    border-radius: 2px;
+    transition: all 0.3s;
+}
+
+
+/* =========================
+   MAIN LAYOUT CONTAINER
+========================= */
+.container {
+    display: flex;
+    gap: 25px;
+    width: 85%;
+    margin: 30px auto;
+}
+
+.container main {
+    flex: 2;
+}
+
+.container aside {
+    flex: 1;
+}
+
+/* Full-width page container (restaurants, forms) */
+.page-container {
+    width: 85%;
+    margin: 30px auto;
+}
+
+
+/* =========================
+   CARDS
+========================= */
+.card {
+    background-color: #FFF8EF;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(50, 44, 43, 0.2);
+    margin-bottom: 25px;
+}
+
+.card h2,
+.card h3 {
+    color: #803D3B;
+    margin-bottom: 12px;
+}
+
+
+/* =========================
+   BUTTONS
+========================= */
+.button,
+button[type="submit"],
+button[type="button"] {
+    display: inline-block;
+    background-color: #803D3B;
+    color: #FFFFFF;
+    text-decoration: none;
+    padding: 11px 18px;
+    border-radius: 6px;
+    margin: 8px 8px 8px 0;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    font-size: 0.95rem;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.button:hover,
+button[type="submit"]:hover,
+button[type="button"]:hover {
+    background-color: #AF8260;
+    color: #322C2B;
+}
+
+.button-outline {
+    display: inline-block;
+    background-color: transparent;
+    color: #803D3B;
+    text-decoration: none;
+    padding: 10px 18px;
+    border-radius: 6px;
+    margin: 8px 8px 8px 0;
+    font-weight: bold;
+    border: 2px solid #803D3B;
+    cursor: pointer;
+    font-size: 0.95rem;
+    transition: all 0.3s;
+}
+
+.button-outline:hover {
+    background-color: #803D3B;
+    color: #fff;
+}
+
+
+/* =========================
+   HERO SECTION (Home page)
+========================= */
+.hero {
+    background: linear-gradient(135deg, #322C2B 0%, #803D3B 100%);
+    color: #E4C59E;
+    padding: 50px 30px;
+    border-radius: 10px;
+    margin-bottom: 25px;
+}
+
+.hero-content h2 {
+    color: #E4C59E;
+    font-size: 1.6rem;
+    margin-bottom: 12px;
+}
+
+.hero-content p {
+    font-size: 1rem;
+    margin-bottom: 20px;
+    color: #d4b08a;
+    max-width: 600px;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.hero-buttons .button {
+    background-color: #E4C59E;
+    color: #322C2B;
+    margin: 0;
+}
+
+.hero-buttons .button:hover {
+    background-color: #FFF8EF;
+    color: #803D3B;
+}
+
+/* Restaurant preview grid on home page */
+.restaurant-preview {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.restaurant-preview .restaurant-card {
+    background-color: #FFF8EF;
+    border: 1px solid #E4C59E;
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0 2px 8px rgba(50, 44, 43, 0.15);
+    text-align: center;
+}
+
+.restaurant-preview .restaurant-card img {
+    width: 100%;
+    height: 140px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.restaurant-preview .restaurant-card h3 {
+    color: #803D3B;
+    margin-bottom: 6px;
+}
+
+.restaurant-preview .restaurant-card p {
+    font-size: 0.88rem;
+    color: #322C2B;
+    margin-bottom: 10px;
+}
+
+/* Services / features grid */
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-top: 16px;
+}
+
+.service-item {
+    text-align: center;
+    padding: 20px 14px;
+    background-color: #F7E7D0;
+    border-radius: 8px;
+}
+
+.service-item .icon {
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.service-item h4 {
+    color: #803D3B;
+    margin-bottom: 6px;
+}
+
+.service-item p {
+    font-size: 0.84rem;
+    color: #5a4f4d;
+}
+
+/* Target users grid */
+.users-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+    margin-top: 12px;
+}
+
+.user-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    background-color: #F7E7D0;
+    border-radius: 8px;
+    padding: 14px;
+}
+
+.user-item .icon {
+    font-size: 1.5rem;
+    flex-shrink: 0;
+}
+
+.user-item h4 {
+    color: #803D3B;
+    margin-bottom: 4px;
+    font-size: 0.95rem;
+}
+
+.user-item p {
+    font-size: 0.82rem;
+    color: #5a4f4d;
+}
+
+
+/* =========================
+   RESTAURANTS PAGE
+========================= */
+.restaurant-search {
+    margin-bottom: 25px;
+}
+
+.search-row {
+    display: flex;
+    gap: 15px;
+    align-items: flex-end;
+    flex-wrap: wrap;
+}
+
+.search-row > div {
+    flex: 1;
+    min-width: 160px;
+}
+
+.search-row label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 6px;
+    color: #803D3B;
+}
+
+.search-row select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #AF8260;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    background-color: #FFF8EF;
+}
+
+/* 2-column restaurant grid */
+.restaurant-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+}
+
+.restaurant-card {
+    background-color: #FFF8EF;
+    border: 1px solid #E4C59E;
+    border-radius: 10px;
+    padding: 18px;
+    box-shadow: 0 4px 10px rgba(50, 44, 43, 0.15);
+}
+
+.restaurant-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 12px;
+}
+
+.restaurant-card h3 {
+    color: #803D3B;
+    margin-bottom: 8px;
+}
+
+.restaurant-card p {
+    font-size: 0.9rem;
+    margin-bottom: 5px;
+    line-height: 1.5;
+}
+
+/* Dishes table inside restaurant cards */
+.dishes-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 8px 0 12px;
+    font-size: 0.88rem;
+}
+
+.dishes-table th {
+    text-align: left;
+    color: #803D3B;
+    border-bottom: 2px solid #E4C59E;
+    padding: 4px 0;
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.dishes-table td {
+    padding: 5px 0;
+    border-bottom: 1px dashed #E4C59E;
+    color: #322C2B;
+}
+
+.dishes-table td:last-child {
+    text-align: right;
+    font-weight: bold;
+    color: #803D3B;
+}
+
+/* Dietary badges */
+.dietary-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin: 8px 0;
+}
+
+.badge {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-size: 0.74rem;
+    font-weight: bold;
+}
+
+.badge-vegan      { background-color: #d1f0d1; color: #2a6b2a; }
+.badge-halal      { background-color: #fef9c3; color: #7a5800; }
+.badge-vegetarian { background-color: #e0f2fe; color: #0a5a8c; }
+.badge-gf         { background-color: #ede9fe; color: #5b21b6; }
+
+.no-results {
+    display: none;
+    font-weight: bold;
+    color: #803D3B;
+    margin-top: 20px;
+}
+
+
+/* =========================
+   PAGE INTRO (inner pages)
+========================= */
+.page-intro {
+    width: 85%;
+    max-width: 900px;
+    margin: 30px auto 0;
+    background-color: #FFF8EF;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(50, 44, 43, 0.2);
+    text-align: center;
+}
+
+.page-intro h2 {
+    color: #803D3B;
+    margin-bottom: 8px;
+}
+
+
+/* =========================
+   RECOMMEND PAGE
+========================= */
+.recommendation-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+    width: 85%;
+    max-width: 1100px;
+    margin: 25px auto 30px;
+}
+
+.recommendation-form-section,
+.recommendation-results {
+    background-color: #FFF8EF;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(50, 44, 43, 0.2);
+}
+
+.recommendation-form-section h3,
+.recommendation-results h3 {
+    color: #803D3B;
+    margin-bottom: 16px;
+}
+
+.recommendation-form-section form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+/* Dietary radio group */
+.form-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    border: 1px solid #AF8260;
+    border-radius: 10px;
+    padding: 15px;
+}
+
+.form-group legend {
+    font-weight: bold;
+    color: #803D3B;
+    padding: 0 8px;
+    font-size: 0.95rem;
+}
+
+.form-group label {
+    background-color: #F7E7D0;
+    padding: 8px 14px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: background-color 0.2s;
+}
+
+.form-group label:hover {
+    background-color: #E4C59E;
+}
+
+/* Budget range slider */
+.budget-wrapper {
+    background-color: #F7E7D0;
+    padding: 18px;
+    border-radius: 10px;
+}
+
+.budget-wrapper > label,
+label[for="purpose"] {
+    display: block;
+    font-weight: bold;
+    color: #803D3B;
+    margin-bottom: 10px;
+}
+
+.budget-display {
+    width: fit-content;
+    margin: 5px auto 12px;
+    padding: 8px 18px;
+    background-color: #FFF8EF;
+    border-radius: 20px;
+    text-align: center;
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #322C2B;
+}
+
+.range-slider {
+    position: relative;
+    width: 80%;
+    height: 40px;
+    margin: 10px auto 5px;
+}
+
+.range-slider::before {
+    content: "";
+    position: absolute;
+    left: 0; right: 0;
+    top: 17px;
+    height: 6px;
+    background-color: #d8d8d8;
+    border-radius: 5px;
+    z-index: 1;
+}
+
+.selected-range {
+    position: absolute;
+    height: 6px;
+    background-color: #803D3B;
+    top: 17px;
+    border-radius: 5px;
+    z-index: 2;
+}
+
+.range-slider input[type="range"] {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 40px;
+    pointer-events: none;
+    appearance: none;
+    background: transparent;
+    z-index: 3;
+}
+
+.range-slider input[type="range"]::-webkit-slider-runnable-track {
+    height: 6px;
+    background: transparent;
+}
+
+.range-slider input[type="range"]::-webkit-slider-thumb {
+    pointer-events: auto;
+    appearance: none;
+    width: 22px;
+    height: 22px;
+    background-color: #803D3B;
+    border-radius: 50%;
+    cursor: pointer;
+    margin-top: -8px;
+}
+
+.range-slider input[type="range"]::-moz-range-thumb {
+    pointer-events: auto;
+    width: 22px;
+    height: 22px;
+    background-color: #803D3B;
+    border-radius: 50%;
+    cursor: pointer;
+    border: none;
+}
+
+/* Dining purpose dropdown */
+#purpose {
+    width: 100%;
+    padding: 11px;
+    border: 1px solid #AF8260;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    background-color: #FFF8EF;
+    color: #322C2B;
+}
+
+/* Recommendation result cards */
+.recommend-card {
+    background-color: #F7E7D0;
+    border-left: 5px solid #803D3B;
+    padding: 16px;
+    border-radius: 8px;
+    margin-bottom: 14px;
+}
+
+.recommend-card h4 {
+    color: #803D3B;
+    margin-bottom: 6px;
+    font-size: 1rem;
+}
+
+.recommend-card p {
+    font-size: 0.88rem;
+    margin-bottom: 5px;
+    color: #322C2B;
+}
+
+.recommend-card .button {
+    margin-top: 10px;
+    margin-bottom: 0;
+}
+
+.results-placeholder {
+    text-align: center;
+    padding: 40px 20px;
+    color: #AF8260;
+    font-size: 0.95rem;
+}
+
+
+/* =========================
+   FORMS (Register & Reservation)
+========================= */
+.form-page-container {
+    width: 85%;
+    max-width: 780px;
+    margin: 30px auto;
+}
+
+.form-card {
+    background-color: #FFF8EF;
+    padding: 32px 36px;
+    border-radius: 12px;
+    box-shadow: 0 4px 14px rgba(50, 44, 43, 0.2);
+}
+
+.form-card h2 {
+    color: #803D3B;
+    margin-bottom: 6px;
+}
+
+.form-card .form-subtitle {
+    color: #AF8260;
+    font-size: 0.9rem;
+    margin-bottom: 28px;
+    display: block;
+}
+
+/* Section heading inside form */
+.form-section-title {
+    font-size: 0.82rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #AF8260;
+    font-weight: bold;
+    margin: 28px 0 16px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #E4C59E;
+}
+
+/* Individual form field */
+.field {
+    margin-bottom: 20px;
+}
+
+.field label {
+    display: block;
+    font-weight: bold;
+    color: #322C2B;
+    margin-bottom: 6px;
+    font-size: 0.92rem;
+}
+
+.field label .required {
+    color: #803D3B;
+    margin-left: 3px;
+}
+
+.field input[type="text"],
+.field input[type="email"],
+.field input[type="password"],
+.field input[type="tel"],
+.field input[type="number"],
+.field input[type="date"],
+.field input[type="time"],
+.field select,
+.field textarea {
+    width: 100%;
+    padding: 11px 13px;
+    border: 1.5px solid #AF8260;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    color: #322C2B;
+    background-color: #FFF8EF;
+    transition: border-color 0.25s;
+    font-family: Arial, sans-serif;
+}
+
+.field input:focus,
+.field select:focus,
+.field textarea:focus {
+    outline: none;
+    border-color: #803D3B;
+    box-shadow: 0 0 0 3px rgba(128, 61, 59, 0.12);
+}
+
+.field input.input-error {
+    border-color: #c0392b;
+    background-color: #fff5f5;
+}
+
+.field input.input-valid,
+.field select.input-valid {
+    border-color: #2a7d2a;
+}
+
+.field textarea {
+    resize: vertical;
+    min-height: 90px;
+}
+
+.field select {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='7' viewBox='0 0 12 7'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23803D3B' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    padding-right: 36px;
+}
+
+/* Two-column row */
+.field-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+}
+
+/* Radio / checkbox inline groups */
+.radio-group,
+.checkbox-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 6px;
+}
+
+.radio-group label,
+.checkbox-group label {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    background-color: #F7E7D0;
+    padding: 8px 14px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: normal;
+    font-size: 0.88rem;
+    transition: background-color 0.2s;
+}
+
+.radio-group label:hover,
+.checkbox-group label:hover {
+    background-color: #E4C59E;
+}
+
+.radio-group input,
+.checkbox-group input {
+    accent-color: #803D3B;
+    cursor: pointer;
+    width: auto;
+}
+
+/* Error message below field */
+.error-msg {
+    display: none;
+    color: #c0392b;
+    font-size: 0.8rem;
+    font-weight: bold;
+    margin-top: 5px;
+    padding: 5px 10px;
+    background-color: #ffe8e8;
+    border-radius: 4px;
+    border-left: 3px solid #c0392b;
+}
+
+.error-msg.show {
+    display: block;
+}
+
+/* Small hint text */
+.field-hint {
+    font-size: 0.78rem;
+    color: #AF8260;
+    margin-top: 4px;
+    display: block;
+}
+
+/* Deposit display box */
+.deposit-box {
+    background-color: #F7E7D0;
+    border: 2px solid #AF8260;
+    border-radius: 6px;
+    padding: 12px 16px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #322C2B;
+}
+
+/* Conditional fields (hidden by default, shown by JS) */
+.conditional-field {
+    display: none;
+}
+
+.conditional-field.show {
+    display: block;
+}
+
+/* Form submit row */
+.form-submit {
+    margin-top: 28px;
+    text-align: center;
+}
+
+.form-submit button {
+    min-width: 200px;
+    padding: 13px 24px;
+    font-size: 1rem;
+}
+
+.form-note {
+    font-size: 0.82rem;
+    color: #AF8260;
+    margin-top: 12px;
+}
+
+
+/* =========================
+   BILL CALCULATOR PAGE
+========================= */
+.bill-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+    width: 85%;
+    max-width: 1050px;
+    margin: 30px auto;
+}
+
+.bill-form-card {
+    background-color: #FFF8EF;
+    padding: 28px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(50, 44, 43, 0.2);
+}
+
+.bill-form-card h3 {
+    color: #803D3B;
+    margin-bottom: 20px;
+}
+
+.bill-result-card {
+    background-color: #322C2B;
+    color: #E4C59E;
+    padding: 28px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(50, 44, 43, 0.3);
+    position: sticky;
+    top: 70px;
+}
+
+.bill-result-card h3 {
+    color: #E4C59E;
+    margin-bottom: 20px;
+}
+
+.bill-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 9px 0;
+    border-bottom: 1px solid rgba(228, 197, 158, 0.2);
+    font-size: 0.9rem;
+}
+
+.bill-row.discount { color: #d4b08a; }
+.bill-row.gst      { color: #d4b08a; }
+.bill-row.tip      { color: #a8d8a8; }
+.bill-row.deposit  { color: #f5c96a; }
+
+.bill-total {
+    display: flex;
+    justify-content: space-between;
+    padding: 14px 0 0;
+    margin-top: 10px;
+    border-top: 2px solid #AF8260;
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #E4C59E;
+}
+
+.bill-remaining {
+    text-align: right;
+    color: rgba(228, 197, 158, 0.6);
+    font-size: 0.84rem;
+    margin-top: 6px;
+}
+
+.bill-placeholder {
+    text-align: center;
+    padding: 40px 20px;
+    color: rgba(228, 197, 158, 0.5);
+}
+
+/* Slider labels */
+.slider-label-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.8rem;
+    color: #AF8260;
+    margin-top: 3px;
+}
+
+.slider-value-display {
+    display: inline-block;
+    background-color: #F7E7D0;
+    color: #803D3B;
+    font-weight: bold;
+    padding: 3px 10px;
+    border-radius: 10px;
+    font-size: 0.9rem;
+    margin-left: 8px;
+}
+
+.field input[type="range"] {
+    width: 100%;
+    height: 4px;
+    accent-color: #803D3B;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+footer {
+    background-color: #322C2B;
+    color: #E4C59E;
+    text-align: center;
+    padding: 16px;
+    font-size: 0.88rem;
+}
+
+
+/* =========================
+   UTILITY CLASSES
+========================= */
+.text-center { text-align: center; }
+.mt-0 { margin-top: 0 !important; }
+.mb-0 { margin-bottom: 0 !important; }
+
+/* Alert / info box */
+.info-box {
+    background-color: #fef9c3;
+    border-left: 4px solid #AF8260;
+    border-radius: 6px;
+    padding: 12px 16px;
+    font-size: 0.88rem;
+    color: #5a4f00;
+    margin-bottom: 16px;
+}
+
+
+/* =========================
+   RESPONSIVE – Tablet (768px–1023px)
+========================= */
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+
+    .container,
+    .page-container,
+    .form-page-container {
+        width: 92%;
+    }
+
+    /* Stack sidebar below on tablet */
+    .container {
+        flex-direction: column;
+    }
+
+    .restaurant-preview {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .recommendation-layout {
+        grid-template-columns: 1fr;
+        width: 92%;
+    }
+
+    .bill-layout {
+        grid-template-columns: 1fr;
+        width: 92%;
+    }
+
+    .bill-result-card {
+        position: static;
+    }
+
+    .restaurant-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .field-row {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+/* =========================
+   RESPONSIVE – Mobile (≤767px)
+========================= */
+@media screen and (max-width: 767px) {
+
+    header h1 { font-size: 1.4rem; }
+
+    /* Collapsible nav */
+    nav {
+        height: auto;
+        position: relative;
+    }
+
+    nav ul {
+        flex-direction: column;
+        display: none;
+        height: auto;
+    }
+
+    nav ul.nav-open {
+        display: flex;
+    }
+
+    nav li { flex: none; }
+
+    nav a {
+        justify-content: flex-start;
+        padding: 12px 20px;
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .nav-toggle {
+        display: flex;
+        position: absolute;
+        right: 10px;
+        top: 0;
+    }
+
+    .container,
+    .page-container,
+    .form-page-container {
+        width: 95%;
+        flex-direction: column;
+    }
+
+    .restaurant-preview,
+    .services-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .users-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .recommendation-layout,
+    .bill-layout {
+        grid-template-columns: 1fr;
+        width: 95%;
+    }
+
+    .bill-result-card {
+        position: static;
+    }
+
+    .restaurant-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .field-row {
+        grid-template-columns: 1fr;
+    }
+
+    .form-card {
+        padding: 20px 16px;
+    }
+
+    .radio-group,
+    .checkbox-group {
+        flex-direction: column;
+    }
+
+    .search-row {
+        flex-direction: column;
+    }
+
+    .search-row > div { min-width: 100%; }
+
+    .range-slider { width: 90%; }
+
+    .hero-buttons {
+        flex-direction: column;
+    }
+}

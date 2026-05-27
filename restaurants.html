@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--
+    TableSpot Melbourne – Restaurants Page (restaurants.html)
+    COS10005 Web Development – Assignment 2
+    Author: Shamsi Alibazi
+-->
+<head>
+    <title>Restaurants | TableSpot Melbourne</title>
+    <meta charset="utf-8">
+    <meta name="description" content="Browse Melbourne restaurants by location, cuisine, price range, and reservation deposit.">
+    <meta name="keywords" content="Melbourne restaurants, restaurant listing, dining, booking, reservation">
+    <meta name="author" content="Shamsi Alibazi">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="css/style.css" rel="stylesheet">
+    <script src="js/script.js" defer></script>
+</head>
+
+<body>
+
+<!-- ========== HEADER ========== -->
+<header>
+    <img src="images/logo.png" alt="TableSpot Melbourne logo">
+    <div>
+        <h1>TableSpot Melbourne</h1>
+        <p>Discover, choose, and reserve your next dining experience.</p>
+    </div>
+</header>
+
+<!-- ========== NAVIGATION ========== -->
+<nav>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation menu">
+        <span></span><span></span><span></span>
+    </button>
+    <ul id="navList">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="restaurants.html" class="active">Restaurants</a></li>
+        <li><a href="reservation.html">Reservation</a></li>
+        <li><a href="recommend.html">Recommendations</a></li>
+        <li><a href="register.html">Register</a></li>
+    </ul>
+</nav>
+
+<!-- ========== MAIN CONTENT ========== -->
+<main class="page-container">
+
+    <!-- Search / filter -->
+    <section class="restaurant-search card">
+        <h2>Find Restaurants in Melbourne</h2>
+        <p style="margin-bottom:16px;">Search by location or cuisine type.</p>
+
+        <form id="restaurantSearchForm">
+            <div class="search-row">
+                <div>
+                    <label for="locationFilter">Location</label>
+                    <select id="locationFilter">
+                        <option value="all">All Melbourne</option>
+                        <option value="cbd">Melbourne CBD</option>
+                        <option value="richmond">Richmond</option>
+                        <option value="fitzroy">Fitzroy</option>
+                        <option value="southbank">Southbank</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label for="cuisineFilter">Cuisine Type</label>
+                    <select id="cuisineFilter">
+                        <option value="all">All Cuisines</option>
+                        <option value="italian">Italian</option>
+                        <option value="middle-eastern">Middle Eastern</option>
+                        <option value="vegan">Vegan</option>
+                        <option value="japanese">Japanese</option>
+                        <option value="modern-australian">Modern Australian</option>
+                        <option value="thai">Thai</option>
+                    </select>
+                </div>
+
+                <div style="display:flex;align-items:flex-end;">
+                    <button type="submit" class="button" style="margin:0;">Search</button>
+                </div>
+            </div>
+        </form>
+    </section>
+
+    <!-- ===== RESTAURANT LISTING ===== -->
+    <section class="card">
+        <h2>Available Restaurants</h2>
+        <p style="margin-bottom:20px;">Showing <strong id="resultCount">6</strong> restaurants.</p>
+
+        <div class="restaurant-grid" id="restaurantGrid">
+
+            <!-- ===== 1. Bella Vita ===== -->
+            <article class="restaurant-card" id="BellaVita"
+                     data-location="cbd" data-cuisine="italian">
+                <img src="images/Bella_Vita.jpeg"
+                     alt="Handmade pasta and wood-fired pizza at Bella Vita Italian restaurant in Melbourne CBD">
+                <h3>Bella Vita</h3>
+
+                <div class="dietary-badges">
+                    <span class="badge badge-vegetarian">Vegetarian Options</span>
+                </div>
+
+                <p><strong>Cuisine:</strong> Italian</p>
+                <p><strong>Location:</strong> Melbourne CBD</p>
+                <p><strong>Price range:</strong> $35–$55 per person</p>
+                <p><strong>Reservation deposit:</strong> $20</p>
+
+                <h4 style="margin:10px 0 6px;color:#803D3B;font-size:0.88rem;text-transform:uppercase;letter-spacing:0.5px;">Signature Dishes</h4>
+                <table class="dishes-table">
+                    <thead>
+                        <tr><th>Dish</th><th>Price</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Margherita Pizza</td><td>$24</td></tr>
+                        <tr><td>Creamy Carbonara</td><td>$28</td></tr>
+                        <tr><td>Truffle Risotto</td><td>$32</td></tr>
+                        <tr><td>Tiramisu</td><td>$12</td></tr>
+                    </tbody>
+                </table>
+
+                <p>
+                    Bella Vita offers a warm Italian dining experience with handmade pasta,
+                    wood-fired pizza, and traditional desserts. It is suitable for couples,
+                    families, and casual group dinners in a relaxed CBD atmosphere.
+                </p>
+
+                <a href="reservation.html?restaurant=Bella%20Vita" class="button">Reserve a Table</a>
+            </article>
+
+            <!-- ===== 2. Saffron Lane ===== -->
+            <article class="restaurant-card" id="SaffronLane"
+                     data-location="richmond" data-cuisine="middle-eastern">
+                <img src="images/Saffron Lane.jpg"
+                     alt="Shared Middle Eastern food platter with lamb kebab and saffron rice at Saffron Lane Richmond">
+                <h3>Saffron Lane</h3>
+
+                <div class="dietary-badges">
+                    <span class="badge badge-halal">Halal Certified</span>
+                    <span class="badge badge-vegetarian">Vegetarian Options</span>
+                </div>
+
+                <p><strong>Cuisine:</strong> Middle Eastern</p>
+                <p><strong>Location:</strong> Richmond</p>
+                <p><strong>Price range:</strong> $30–$50 per person</p>
+                <p><strong>Reservation deposit:</strong> $15</p>
+
+                <h4 style="margin:10px 0 6px;color:#803D3B;font-size:0.88rem;text-transform:uppercase;letter-spacing:0.5px;">Signature Dishes</h4>
+                <table class="dishes-table">
+                    <thead>
+                        <tr><th>Dish</th><th>Price</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Lamb Kebab Plate</td><td>$26</td></tr>
+                        <tr><td>Saffron Rice Plate</td><td>$22</td></tr>
+                        <tr><td>Mixed Mezze Platter</td><td>$28</td></tr>
+                        <tr><td>Baklava</td><td>$10</td></tr>
+                    </tbody>
+                </table>
+
+                <p>
+                    Saffron Lane serves grilled meats, fragrant rice dishes, dips, and shared plates.
+                    Fully halal certified and welcoming for family dining or relaxed dinners with friends.
+                </p>
+
+                <a href="reservation.html?restaurant=Saffron%20Lane" class="button">Reserve a Table</a>
+            </article>
+
+            <!-- ===== 3. Green Bowl ===== -->
+            <article class="restaurant-card" id="GreenBowl"
+                     data-location="fitzroy" data-cuisine="vegan">
+                <img src="images/Vegansaladbowl.jpg"
+                     alt="Colourful vegan Buddha bowl with roasted vegetables and tahini at Green Bowl Fitzroy">
+                <h3>Green Bowl</h3>
+
+                <div class="dietary-badges">
+                    <span class="badge badge-vegan">Fully Vegan</span>
+                    <span class="badge badge-vegetarian">Vegetarian</span>
+                    <span class="badge badge-gf">Gluten-Free Options</span>
+                </div>
+
+                <p><strong>Cuisine:</strong> Vegan / Plant-Based</p>
+                <p><strong>Location:</strong> Fitzroy</p>
+                <p><strong>Price range:</strong> $25–$40 per person</p>
+                <p><strong>Reservation deposit:</strong> $10</p>
+
+                <h4 style="margin:10px 0 6px;color:#803D3B;font-size:0.88rem;text-transform:uppercase;letter-spacing:0.5px;">Signature Dishes</h4>
+                <table class="dishes-table">
+                    <thead>
+                        <tr><th>Dish</th><th>Price</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Vegan Buddha Bowl</td><td>$21</td></tr>
+                        <tr><td>Tofu Stir Fry</td><td>$23</td></tr>
+                        <tr><td>Açaí Smoothie Bowl</td><td>$16</td></tr>
+                        <tr><td>Raw Choc Tart (GF)</td><td>$11</td></tr>
+                    </tbody>
+                </table>
+
+                <p>
+                    Green Bowl focuses on fresh plant-based meals, smoothie bowls, salads,
+                    and healthy vegan dishes. Ideal for health-conscious diners
+                    and customers with vegan or gluten-free dietary preferences.
+                </p>
+
+                <a href="reservation.html?restaurant=Green%20Bowl" class="button">Reserve a Table</a>
+            </article>
+
+            <!-- ===== 4. Sakura House ===== -->
+            <article class="restaurant-card" id="SakuraHouse"
+                     data-location="cbd" data-cuisine="japanese">
+                <img src="images/Sakura_House.jpg"
+                     alt="Japanese sushi platter and miso soup at Sakura House Melbourne CBD">
+                <h3>Sakura House</h3>
+
+                <div class="dietary-badges">
+                    <span class="badge badge-halal">Halal Options</span>
+                </div>
+
+                <p><strong>Cuisine:</strong> Japanese</p>
+                <p><strong>Location:</strong> Melbourne CBD</p>
+                <p><strong>Price range:</strong> $40–$65 per person</p>
+                <p><strong>Reservation deposit:</strong> $25</p>
+
+                <h4 style="margin:10px 0 6px;color:#803D3B;font-size:0.88rem;text-transform:uppercase;letter-spacing:0.5px;">Signature Dishes</h4>
+                <table class="dishes-table">
+                    <thead>
+                        <tr><th>Dish</th><th>Price</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Sushi Set (12 pcs)</td><td>$32</td></tr>
+                        <tr><td>Chicken Ramen</td><td>$24</td></tr>
+                        <tr><td>Tempura Udon</td><td>$26</td></tr>
+                        <tr><td>Matcha Ice Cream</td><td>$9</td></tr>
+                    </tbody>
+                </table>
+
+                <p>
+                    Sakura House offers sushi, ramen, bento meals, and Japanese-style dining
+                    in a calm CBD setting. Suitable for business meals, casual lunches,
+                    and small group bookings.
+                </p>
+
+                <a href="reservation.html?restaurant=Sakura%20House" class="button">Reserve a Table</a>
+            </article>
+
+            <!-- ===== 5. River Plate ===== -->
+            <article class="restaurant-card" id="RiverPlate"
+                     data-location="southbank" data-cuisine="modern-australian">
+                <img src="images/River_Plate.jpg"
+                     alt="Grilled barramundi with seasonal vegetables at River Plate Southbank restaurant">
+                <h3>River Plate</h3>
+
+                <div class="dietary-badges">
+                    <span class="badge badge-gf">Gluten-Free Menu</span>
+                </div>
+
+                <p><strong>Cuisine:</strong> Modern Australian</p>
+                <p><strong>Location:</strong> Southbank</p>
+                <p><strong>Price range:</strong> $45–$70 per person</p>
+                <p><strong>Reservation deposit:</strong> $30</p>
+
+                <h4 style="margin:10px 0 6px;color:#803D3B;font-size:0.88rem;text-transform:uppercase;letter-spacing:0.5px;">Signature Dishes</h4>
+                <table class="dishes-table">
+                    <thead>
+                        <tr><th>Dish</th><th>Price</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Grilled Barramundi</td><td>$34</td></tr>
+                        <tr><td>Wagyu Steak Plate</td><td>$42</td></tr>
+                        <tr><td>Charcuterie Board</td><td>$28</td></tr>
+                        <tr><td>Sticky Date Pudding</td><td>$14</td></tr>
+                    </tbody>
+                </table>
+
+                <p>
+                    River Plate provides modern Australian dishes with fresh local ingredients
+                    and a relaxing riverside atmosphere at Southbank.
+                    An excellent choice for date nights, celebrations, and professional dinners.
+                </p>
+
+                <a href="reservation.html?restaurant=River%20Plate" class="button">Reserve a Table</a>
+            </article>
+
+            <!-- ===== 6. Thai Orchid ===== -->
+            <article class="restaurant-card" id="ThaiOrchid"
+                     data-location="richmond" data-cuisine="thai">
+                <img src="images/ThaiOrchid.jpeg"
+                     alt="Thai green curry with jasmine rice and pad thai noodles at Thai Orchid Richmond">
+                <h3>Thai Orchid</h3>
+
+                <div class="dietary-badges">
+                    <span class="badge badge-vegetarian">Vegetarian Options</span>
+                    <span class="badge badge-halal">Halal Options</span>
+                </div>
+
+                <p><strong>Cuisine:</strong> Thai</p>
+                <p><strong>Location:</strong> Richmond</p>
+                <p><strong>Price range:</strong> $28–$45 per person</p>
+                <p><strong>Reservation deposit:</strong> $15</p>
+
+                <h4 style="margin:10px 0 6px;color:#803D3B;font-size:0.88rem;text-transform:uppercase;letter-spacing:0.5px;">Signature Dishes</h4>
+                <table class="dishes-table">
+                    <thead>
+                        <tr><th>Dish</th><th>Price</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Green Curry</td><td>$24</td></tr>
+                        <tr><td>Pad Thai Noodles</td><td>$22</td></tr>
+                        <tr><td>Tom Yum Soup</td><td>$14</td></tr>
+                        <tr><td>Mango Sticky Rice</td><td>$10</td></tr>
+                    </tbody>
+                </table>
+
+                <p>
+                    Thai Orchid serves curries, noodles, stir-fries, and shared dishes
+                    with bold, authentic Thai flavours. A comfortable option for casual meals,
+                    families, and group dining in Richmond.
+                </p>
+
+                <a href="reservation.html?restaurant=Thai%20Orchid" class="button">Reserve a Table</a>
+            </article>
+
+        </div><!-- end #restaurantGrid -->
+
+        <p id="noResults" class="no-results" role="alert">No restaurants match your search. Try a different location or cuisine.</p>
+
+    </section>
+
+</main>
+
+<!-- ========== FOOTER ========== -->
+<footer>
+    <p>&copy; 2026 TableSpot Melbourne | Created by Shamsi Alibazi for COS10005 Web Development</p>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--
+    TableSpot Melbourne – Recommendations Page (recommend.html)
+    COS10005 Web Development – Assignment 2
+    Author: Shamsi Alibazi
+-->
+<head>
+    <title>Recommendations | TableSpot Melbourne</title>
+    <meta charset="utf-8">
+    <meta name="description" content="Get personalised restaurant recommendations in Melbourne based on dietary preference, budget range, and dining purpose.">
+    <meta name="keywords" content="Melbourne restaurant recommendations, dining preferences, restaurant booking, TableSpot Melbourne">
+    <meta name="author" content="Shamsi Alibazi">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="css/style.css" rel="stylesheet">
+    <script src="js/script.js" defer></script>
+</head>
+
+<body>
+
+<!-- ========== HEADER ========== -->
+<header>
+    <img src="images/logo.png" alt="TableSpot Melbourne logo">
+    <div>
+        <h1>TableSpot Melbourne</h1>
+        <p>Discover, choose, and reserve your next dining experience.</p>
+    </div>
+</header>
+
+<!-- ========== NAVIGATION ========== -->
+<nav>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation menu">
+        <span></span><span></span><span></span>
+    </button>
+    <ul id="navList">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="restaurants.html">Restaurants</a></li>
+        <li><a href="reservation.html">Reservation</a></li>
+        <li><a href="recommend.html" class="active">Recommendations</a></li>
+        <li><a href="register.html">Register</a></li>
+    </ul>
+</nav>
+
+<!-- ========== MAIN CONTENT ========== -->
+<main>
+
+    <!-- Page intro -->
+    <section class="page-intro">
+        <h2>Find Your Recommended Restaurant</h2>
+        <p>
+            Select your dietary preference, budget, and dining purpose below.
+            Our recommendation engine uses rule-based logic to suggest the best
+            matching restaurants from our Melbourne collection.
+        </p>
+    </section>
+
+    <!-- Two-column layout: form | results -->
+    <div class="recommendation-layout">
+
+        <!-- Preference form -->
+        <section class="recommendation-form-section">
+            <h3>Your Preferences</h3>
+
+            <form id="recommendForm" novalidate>
+
+                <!-- Dietary preference (radio buttons) -->
+                <fieldset class="form-group">
+                    <legend>Dietary Preference <span style="color:#803D3B">*</span></legend>
+
+                    <label>
+                        <input type="radio" name="dietary" value="none" required>
+                        No Restriction
+                    </label>
+                    <label>
+                        <input type="radio" name="dietary" value="vegan">
+                        Vegan
+                    </label>
+                    <label>
+                        <input type="radio" name="dietary" value="halal">
+                        Halal
+                    </label>
+                    <label>
+                        <input type="radio" name="dietary" value="vegetarian">
+                        Vegetarian
+                    </label>
+                </fieldset>
+
+                <!-- Budget range (dual slider) -->
+                <div class="budget-wrapper">
+                    <label>Budget per Person</label>
+
+                    <div class="budget-display">
+                        <span id="minPriceText">$20</span>
+                        &nbsp;–&nbsp;
+                        <span id="maxPriceText">$120</span>
+                    </div>
+
+                    <div class="range-slider">
+                        <div class="selected-range"></div>
+                        <input type="range" id="minPrice" name="minPrice"
+                               min="20" max="200" step="5" value="20"
+                               aria-label="Minimum price per person">
+                        <input type="range" id="maxPrice" name="maxPrice"
+                               min="20" max="200" step="5" value="120"
+                               aria-label="Maximum price per person">
+                    </div>
+                </div>
+
+                <!-- Dining purpose -->
+                <div>
+                    <label for="purpose" style="display:block;font-weight:bold;color:#803D3B;margin-bottom:8px;">
+                        Dining Purpose <span style="color:#803D3B">*</span>
+                    </label>
+                    <select id="purpose" name="purpose" required>
+                        <option value="">Select dining purpose</option>
+                        <option value="family">Family Dinner</option>
+                        <option value="date">Romantic Date</option>
+                        <option value="business">Business Meal</option>
+                        <option value="casual">Casual Catch-up</option>
+                    </select>
+                </div>
+
+                <button type="submit">Show Recommendations</button>
+            </form>
+        </section>
+
+        <!-- Results panel -->
+        <section class="recommendation-results" aria-live="polite" aria-label="Recommendation results">
+            <h3>Recommended Restaurants</h3>
+
+            <div id="recommendationOutput">
+                <div class="results-placeholder">
+                    <p>🍽️ Complete the form and click <strong>Show Recommendations</strong> to see personalised restaurant suggestions.</p>
+                </div>
+            </div>
+        </section>
+
+    </div><!-- end .recommendation-layout -->
+
+</main>
+
+<!-- ========== FOOTER ========== -->
+<footer>
+    <p>&copy; 2026 TableSpot Melbourne | Created by Shamsi Alibazi for COS10005 Web Development</p>
+</footer>
+
+</body>
+</html>

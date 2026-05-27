@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--
+    TableSpot Melbourne – Reservation Page (reservation.html)
+    COS10005 Web Development – Assignment 2
+    Author: Shamsi Alibazi
+-->
+<head>
+    <title>Reservation | TableSpot Melbourne</title>
+    <meta charset="utf-8">
+    <meta name="description" content="Reserve a table at your chosen Melbourne restaurant through TableSpot. Select date, time, guests, and pay a small deposit.">
+    <meta name="keywords" content="restaurant reservation Melbourne, table booking, online reservation, TableSpot Melbourne">
+    <meta name="author" content="Shamsi Alibazi">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="css/style.css" rel="stylesheet">
+    <script src="js/script.js" defer></script>
+</head>
+
+<body>
+
+<!-- ========== HEADER ========== -->
+<header>
+    <img src="images/logo.png" alt="TableSpot Melbourne logo">
+    <div>
+        <h1>TableSpot Melbourne</h1>
+        <p>Discover, choose, and reserve your next dining experience.</p>
+    </div>
+</header>
+
+<!-- ========== NAVIGATION ========== -->
+<nav>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation menu">
+        <span></span><span></span><span></span>
+    </button>
+    <ul id="navList">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="restaurants.html">Restaurants</a></li>
+        <li><a href="reservation.html" class="active">Reservation</a></li>
+        <li><a href="recommend.html">Recommendations</a></li>
+        <li><a href="register.html">Register</a></li>
+    </ul>
+</nav>
+
+<!-- ========== MAIN CONTENT ========== -->
+<main>
+
+    <section class="page-intro">
+        <h2>Reserve a Table</h2>
+        <p>
+            Complete the form below to secure your dining experience.
+            A reservation deposit is required to confirm your booking.
+            You can arrive directly from the Recommendations page or choose a restaurant below.
+        </p>
+    </section>
+
+    <div class="form-page-container" style="max-width:820px;">
+        <div class="form-card">
+            <h2>Booking Form</h2>
+            <span class="form-subtitle">
+                Fields marked <strong style="color:#803D3B;">*</strong> are required.
+            </span>
+
+            <!--
+                Reservation form
+                method="POST" and action per assignment specification.
+            -->
+            <form id="reservationForm"
+                  method="POST"
+                  action="http://mercury.swin.edu.au/it000000/cos10005/regtest.php"
+                  novalidate>
+
+                <!-- ===== PERSONAL DETAILS ===== -->
+                <p class="form-section-title">Your Details</p>
+
+                <!-- Full name -->
+                <div class="field">
+                    <label for="fullName">Full Name <span class="required">*</span></label>
+                    <input type="text"
+                           id="fullName"
+                           name="fullName"
+                           placeholder="e.g. Shamsi Alibazi"
+                           autocomplete="name"
+                           aria-describedby="fullNameError">
+                    <span class="error-msg" id="fullNameError" role="alert"></span>
+                </div>
+
+                <div class="field-row">
+                    <!-- Email -->
+                    <div class="field">
+                        <label for="resEmail">Email Address <span class="required">*</span></label>
+                        <input type="email"
+                               id="resEmail"
+                               name="email"
+                               placeholder="you@example.com"
+                               autocomplete="email"
+                               aria-describedby="resEmailError">
+                        <span class="error-msg" id="resEmailError" role="alert"></span>
+                    </div>
+
+                    <!-- Phone -->
+                    <div class="field">
+                        <label for="resPhone">Phone Number <span class="required">*</span></label>
+                        <input type="tel"
+                               id="resPhone"
+                               name="phone"
+                               placeholder="e.g. 0412345678"
+                               autocomplete="tel"
+                               aria-describedby="resPhoneError resPhoneHint">
+                        <span class="field-hint" id="resPhoneHint">At least 10 digits required.</span>
+                        <span class="error-msg" id="resPhoneError" role="alert"></span>
+                    </div>
+                </div>
+
+                <!-- ===== RESTAURANT SELECTION ===== -->
+                <p class="form-section-title">Restaurant &amp; Booking Details</p>
+
+                <!--
+                    Restaurant dropdown.
+                    Pre-filled from URL query string (?restaurant=...) or localStorage
+                    when arriving from recommendations page or home page.
+                    User can always change the selection here.
+                -->
+                <div class="field">
+                    <label for="restaurant">Restaurant <span class="required">*</span></label>
+                    <select id="restaurant" name="restaurant" aria-describedby="restaurantError">
+                        <option value="">-- Select a restaurant --</option>
+                        <option value="Bella Vita">Bella Vita – Italian | $35–$55/person | Deposit $20</option>
+                        <option value="Saffron Lane">Saffron Lane – Middle Eastern | $30–$50/person | Deposit $15</option>
+                        <option value="Green Bowl">Green Bowl – Vegan | $25–$40/person | Deposit $10</option>
+                        <option value="Sakura House">Sakura House – Japanese | $40–$65/person | Deposit $25</option>
+                        <option value="River Plate">River Plate – Modern Australian | $45–$70/person | Deposit $30</option>
+                        <option value="Thai Orchid">Thai Orchid – Thai | $28–$45/person | Deposit $15</option>
+                    </select>
+                    <span class="error-msg" id="restaurantError" role="alert"></span>
+                </div>
+
+                <!-- Deposit display – dynamically updated when restaurant changes -->
+                <div class="field">
+                    <label>Reservation Deposit Amount</label>
+                    <div class="deposit-box" id="depositDisplay" aria-live="polite">
+                        Select a restaurant to see the deposit amount.
+                    </div>
+                    <span class="field-hint">
+                        The deposit amount is set per restaurant and secures your booking.
+                    </span>
+                </div>
+
+                <!-- Date and Time -->
+                <div class="field-row">
+                    <div class="field">
+                        <label for="resDate">Reservation Date <span class="required">*</span></label>
+                        <input type="date"
+                               id="resDate"
+                               name="date"
+                               aria-describedby="resDateError">
+                        <span class="error-msg" id="resDateError" role="alert"></span>
+                    </div>
+
+                    <div class="field">
+                        <label for="resTime">Reservation Time <span class="required">*</span></label>
+                        <input type="time"
+                               id="resTime"
+                               name="time"
+                               min="11:00"
+                               max="22:00"
+                               aria-describedby="resTimeError">
+                        <span class="error-msg" id="resTimeError" role="alert"></span>
+                    </div>
+                </div>
+
+                <!-- Number of people -->
+                <div class="field">
+                    <label for="numPeople">Number of Guests <span class="required">*</span></label>
+                    <input type="number"
+                           id="numPeople"
+                           name="numPeople"
+                           min="1"
+                           max="50"
+                           placeholder="e.g. 4"
+                           aria-describedby="numPeopleError">
+                    <span class="error-msg" id="numPeopleError" role="alert"></span>
+                </div>
+
+                <!-- Special requests (optional) -->
+                <div class="field">
+                    <label for="specialRequests">
+                        Special Requests
+                        <span style="color:#AF8260;font-weight:normal;">(optional)</span>
+                    </label>
+                    <textarea id="specialRequests"
+                              name="specialRequests"
+                              placeholder="e.g. window seat, high chair needed, nut allergy…"></textarea>
+                </div>
+
+                <!-- ===== DEPOSIT PAYMENT ===== -->
+                <p class="form-section-title">Deposit Payment Method</p>
+
+                <!--
+                    Payment method radios.
+                    Selecting "Voucher" shows voucher code field.
+                    Selecting "Online Payment" shows card type + card number fields.
+                    Handled by script.js togglePaymentFields().
+                -->
+                <div class="field">
+                    <fieldset style="border:none;padding:0;">
+                        <legend style="font-weight:bold;color:#322C2B;font-size:0.92rem;margin-bottom:10px;">
+                            Deposit Method <span class="required">*</span>
+                        </legend>
+                        <div class="radio-group" role="radiogroup" aria-describedby="paymentError">
+                            <label>
+                                <input type="radio" name="paymentMethod" value="voucher" id="payVoucher">
+                                🎟️ Voucher Code
+                            </label>
+                            <label>
+                                <input type="radio" name="paymentMethod" value="online" id="payOnline">
+                                💳 Online Payment
+                            </label>
+                        </div>
+                        <span class="error-msg" id="paymentError" role="alert"></span>
+                    </fieldset>
+                </div>
+
+                <!-- Voucher code field – shown only when Voucher is selected -->
+                <div class="field conditional-field" id="voucherField">
+                    <label for="voucherCode">Voucher Code</label>
+                    <input type="text"
+                           id="voucherCode"
+                           name="voucherCode"
+                           placeholder="Enter 12-digit voucher code"
+                           maxlength="12"
+                           aria-describedby="voucherHint">
+                    <span class="field-hint" id="voucherHint">
+                        12-character alphanumeric code found on your voucher.
+                    </span>
+                </div>
+
+                <!-- Card type – shown only when Online Payment is selected -->
+                <div class="field conditional-field" id="cardTypeField">
+                    <label for="cardType">Card Type <span class="required">*</span></label>
+                    <select id="cardType" name="cardType" aria-describedby="cardTypeError">
+                        <option value="">-- Select card type --</option>
+                        <option value="visa">Visa (16 digits)</option>
+                        <option value="mastercard">Mastercard (16 digits)</option>
+                        <option value="amex">American Express (15 digits)</option>
+                    </select>
+                    <span class="error-msg" id="cardTypeError" role="alert"></span>
+                </div>
+
+                <!-- Card number – shown only when Online Payment is selected -->
+                <div class="field conditional-field" id="cardField">
+                    <label for="cardNumber">Credit Card Number <span class="required">*</span></label>
+                    <input type="text"
+                           id="cardNumber"
+                           name="cardNumber"
+                           placeholder="Digits only — use fake card number for testing"
+                           maxlength="16"
+                           aria-describedby="cardNumberError cardNumberHint">
+                    <span class="field-hint" id="cardNumberHint">
+                        ⚠️ Use test/fake card numbers only. Visa/Mastercard: 16 digits. Amex: 15 digits.
+                    </span>
+                    <span class="error-msg" id="cardNumberError" role="alert"></span>
+                </div>
+
+                <!-- ===== BILLING DETAILS ===== -->
+                <p class="form-section-title">Billing Details</p>
+
+                <!--
+                    "Same as contact email" checkbox.
+                    When checked, billing email is auto-filled from resEmail and made read-only.
+                    When unchecked, billing email field is cleared and editable again.
+                    Handled by script.js.
+                -->
+                <div class="field">
+                    <div class="checkbox-group" style="margin-bottom:12px;">
+                        <label>
+                            <input type="checkbox" id="sameEmail" name="sameEmail">
+                            Use the same email address as above for billing
+                        </label>
+                    </div>
+
+                    <label for="billingEmail">Billing Email Address <span class="required">*</span></label>
+                    <input type="email"
+                           id="billingEmail"
+                           name="billingEmail"
+                           placeholder="billing@example.com"
+                           autocomplete="email"
+                           aria-describedby="billingEmailError">
+                    <span class="error-msg" id="billingEmailError" role="alert"></span>
+                </div>
+
+                <!-- Info note -->
+                <div class="info-box">
+                    ℹ️ By confirming this reservation, you agree to our cancellation policy.
+                    A deposit is charged now to secure your booking; the remaining balance is paid at the restaurant.
+                    Cancellations require at least 24 hours' notice.
+                </div>
+
+                <!-- ===== SUBMIT ===== -->
+                <div class="form-submit">
+                    <button type="submit">Confirm Reservation</button>
+                    <p class="form-note">
+                        Want to compare restaurants first?
+                        <a href="restaurants.html">View all restaurants</a> or
+                        <a href="recommend.html">get a recommendation</a>.
+                    </p>
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+</main>
+
+<!-- ========== FOOTER ========== -->
+<footer>
+    <p>&copy; 2026 TableSpot Melbourne | Created by Shamsi Alibazi for COS10005 Web Development</p>
+</footer>
+
+</body>
+</html>
